@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <declare-styleable name="StepDotView">
+        <attr name="highDotColor" format="color"/>
+        <attr name="defaultDotColor" format="color"/>
+        <attr name="radius" format="dimension"/>
+        <attr name="position" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="StepViewLayout">
+        <attr name="dotHighColor" format="color"/>
+        <attr name="dotDefaultDotColor" format="color"/>
+        <attr name="dotRadius" format="dimension"/>
+        <attr name="dotPosition" format="integer"/>
+    </declare-styleable>
+    
+</resources>
