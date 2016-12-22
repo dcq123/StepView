@@ -1,10 +1,9 @@
 package cn.qing.soft.stepview;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        Log.i("MainActivity", "width:" + displayMetrics.widthPixels + "\t height:" + displayMetrics.heightPixels);
         for (int i = 0; i < 30; i++) {
             StepItemData data = new StepItemData();
             if (i % 2 == 0) {
@@ -36,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 使用该方法就是采用默认的右侧布局,一段文案,一个时间的方式来展现
          */
-//        stepView.setData(datas);
+        stepView.setData(datas);
 
         /**
          * 使用该方式可以传递一个自定义的右侧的布局,这样控制的权利就交给回调方法中自己来控制
          */
-        stepView.setDataAndView(datas, R.layout.custom_step_item, new StepViewLayout.InflateContentListener() {
+        /*stepView.setDataAndView(datas, R.layout.custom_step_item, new StepViewLayout.InflateContentListener() {
             @Override
             public void onContentInflate(int position, View contentView) {
                 StepItemData data = datas.get(position);
@@ -54,6 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     date.setTextColor(Color.parseColor("#1c980f"));
                 }
             }
-        });
+        });*/
     }
 }

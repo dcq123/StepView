@@ -57,14 +57,18 @@ public class StepViewLayout extends LinearLayout {
 
     /**
      * 设置数据,使用默认的布局样式
+     *
      * @param data
      */
     public void setData(List<StepItemData> data) {
+        if (data == null) {
+            return;
+        }
         this.datas = data;
         inflateContent();
     }
 
-    private void setStepDotViewStyle(StepDotView dotView,int position){
+    private void setStepDotViewStyle(StepDotView dotView, int position) {
         dotView.setDotPosition(dotPosition);
         dotView.setHighDotColor(highDotColor);
         dotView.setDefaultDotColor(defaultDotColor);
@@ -80,7 +84,7 @@ public class StepViewLayout extends LinearLayout {
         for (int i = 0; i < datas.size(); i++) {
             View contentView = layoutInflater.inflate(R.layout.step_item, null);
             StepDotView dotView = (StepDotView) contentView.findViewById(R.id.stepDotView);
-            setStepDotViewStyle(dotView,i);
+            setStepDotViewStyle(dotView, i);
 
             TextView msg = (TextView) contentView.findViewById(R.id.itemMsg);
             TextView date = (TextView) contentView.findViewById(R.id.itemDate);
@@ -99,11 +103,15 @@ public class StepViewLayout extends LinearLayout {
 
     /**
      * 设置数据,并使用自定义的布局,该布局的填充需要自己在回调方法中设置样式
+     *
      * @param data
      * @param layoutId
      * @param inflateContentListener
      */
     public void setDataAndView(List data, int layoutId, InflateContentListener inflateContentListener) {
+        if (data == null) {
+            return;
+        }
         this.datas = data;
         for (int i = 0; i < datas.size(); i++) {
 
