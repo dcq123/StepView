@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -87,11 +88,33 @@ public class StepNodeItemDecoration extends RecyclerView.ItemDecoration {
             int adapterPosition = parent.getChildAdapterPosition(child);
             // 绘制节点圆圈
             if (adapterPosition == 0) {
-                c.drawCircle(sx, cy, radius, mDotHighPaint);
-                c.drawCircle(sx, cy, ringRadius, mDotHighRingPaint);
-                maxCy = ringRadius;
+                // 使用设置的drawable资源作为圆点
+                if (mBuilder.highDotDrawable != null) {
+                    int left = mBuilder.leftMargin - mBuilder.highDotDrawable.getIntrinsicWidth() / 2;
+                    int top = cy - mBuilder.highDotDrawable.getIntrinsicHeight() / 2;
+                    int right = left + mBuilder.highDotDrawable.getIntrinsicWidth();
+                    int bottom = top + mBuilder.highDotDrawable.getIntrinsicHeight();
+                    mBuilder.highDotDrawable.setBounds(left, top, right, bottom);
+                    mBuilder.highDotDrawable.draw(c);
+                    maxCy = mBuilder.highDotDrawable.getIntrinsicHeight() / 2;
+                } else {
+                    c.drawCircle(sx, cy, radius, mDotHighPaint);
+                    c.drawCircle(sx, cy, ringRadius, mDotHighRingPaint);
+                    maxCy = ringRadius;
+                }
             } else {
-                c.drawCircle(sx, cy, radius, mDotPaint);
+                if (mBuilder.defaultDotDrawable != null) {
+                    maxCy = mBuilder.defaultDotDrawable.getIntrinsicHeight() / 2;
+                    int left = mBuilder.leftMargin - mBuilder.defaultDotDrawable.getIntrinsicWidth() / 2;
+                    int top = cy - mBuilder.defaultDotDrawable.getIntrinsicHeight() / 2;
+                    int right = left + mBuilder.defaultDotDrawable.getIntrinsicWidth();
+                    int bottom = top + mBuilder.defaultDotDrawable.getIntrinsicHeight();
+                    mBuilder.defaultDotDrawable.setBounds(left, top, right, bottom);
+                    mBuilder.defaultDotDrawable.draw(c);
+                } else {
+                    c.drawCircle(sx, cy, radius, mDotPaint);
+                    maxCy = radius;
+                }
             }
 
             // 绘制上竖线
@@ -120,6 +143,8 @@ public class StepNodeItemDecoration extends RecyclerView.ItemDecoration {
         private int defaultDotColor;
         private int highDotColor;
         private int dotPosition;
+        private Drawable defaultDotDrawable;
+        private Drawable highDotDrawable;
         private int radius;
         private Context context;
 
@@ -129,6 +154,16 @@ public class StepNodeItemDecoration extends RecyclerView.ItemDecoration {
 
         public Builder setRadius(int radius) {
             this.radius = radius;
+            return this;
+        }
+
+        public Builder setDefaultDotDrawable(Drawable defaultDotDrawable) {
+            this.defaultDotDrawable = defaultDotDrawable;
+            return this;
+        }
+
+        public Builder setHighDotDrawable(Drawable highDotDrawable) {
+            this.highDotDrawable = highDotDrawable;
             return this;
         }
 

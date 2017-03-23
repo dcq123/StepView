@@ -3,6 +3,7 @@ package com.github.qing.stepviewlib;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +38,8 @@ public class StepView extends RecyclerView {
     private int defaultDotColor, highDotColor;
     private int dotPosition;
     private int radius;
+    private Drawable defaultDotDrawable;
+    private Drawable highDotDrawable;
     private int defaultColor = Color.parseColor("#eeeeee");
 
     private List itemDatas = new ArrayList<>();
@@ -60,6 +63,7 @@ public class StepView extends RecyclerView {
         radius = ScreenUtils.dp2px(context, DEFAULT_DOT_RADIUS);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StepView, defStyle, 0);
+
         leftMargin = (int) ta.getDimension(R.styleable.StepView_leftMargin, leftMargin);
         rightMargin = (int) ta.getDimension(R.styleable.StepView_rightMargin, rightMargin);
         lineWidth = (int) ta.getDimension(R.styleable.StepView_lineWidth, lineWidth);
@@ -68,6 +72,9 @@ public class StepView extends RecyclerView {
         defaultDotColor = ta.getColor(R.styleable.StepView_defaultDotColor, Color.parseColor("#d0d0d0"));
         highDotColor = ta.getColor(R.styleable.StepView_highDotColor, Color.parseColor("#1c980f"));
         dotPosition = ta.getInteger(R.styleable.StepView_dotPosition, StepNodeItemDecoration.POSITION_TOP);
+        defaultDotDrawable = ta.getDrawable(R.styleable.StepView_defaultDotDrawable);
+        highDotDrawable = ta.getDrawable(R.styleable.StepView_highDotDrawable);
+
         ta.recycle();
 
         init();
@@ -90,6 +97,8 @@ public class StepView extends RecyclerView {
                         .setHighDotColor(highDotColor)
                         .setLineWidth(lineWidth)
                         .setRadius(radius)
+                        .setDefaultDotDrawable(defaultDotDrawable)
+                        .setHighDotDrawable(highDotDrawable)
                         .setDotPosition(dotPosition)
                         .build()
         );
