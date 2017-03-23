@@ -23,5 +23,6 @@ android {
 
 dependencies {
     compile project(':StepViewLib')
+//    compile 'com.github.dcq123:StepView:v0.0.2'
     compile 'com.android.support:appcompat-v7:25.2.0'
 }

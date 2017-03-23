@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
-        app:defaultDotDrawable="@mipmap/ic_default_dot"
         app:dotPosition="top"
-        app:highDotDrawable="@mipmap/ic_light_dot"
         app:lineColor="#eee"
         app:lineWidth="1dp"
         app:radius="5dp" />

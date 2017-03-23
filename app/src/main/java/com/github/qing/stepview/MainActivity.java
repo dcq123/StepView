@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         stepView = (StepView) findViewById(R.id.stepView);
 
         initData();
+        // 指定数据集合
         stepView.setDatas(datas);
+        // 设置view的绑定监听
         stepView.setBindViewListener(new StepView.BindViewListener() {
             @Override
             public void onBindView(TextView itemMsg, TextView itemDate, Object data) {
