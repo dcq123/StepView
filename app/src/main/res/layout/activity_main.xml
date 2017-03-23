@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.qing.soft.stepview.MainActivity">
+    android:orientation="vertical">
 
-    <cn.qing.soft.stepview.views.StepViewLayout
+    <com.github.qing.stepviewlib.StepView
         android:id="@+id/stepView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:dotDefaultDotColor="#d0d0d0"
-        app:dotHighColor="#1c980f"
-        app:dotPosition="0"
-        app:dotRadius="5dp" />
+        android:layout_height="match_parent"
+        android:background="#fff"
+        app:dotPosition="top"
+        app:lineColor="#eee"
+        app:radius="5dp" />
 
 
-</ScrollView>
+</LinearLayout>

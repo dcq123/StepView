@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="StepView">
+        <attr name="leftMargin" format="dimension" />
+        <attr name="rightMargin" format="dimension" />
+        <attr name="lineWidth" format="dimension" />
+        <attr name="radius" format="dimension" />
+        <attr name="lineColor" format="color" />
+        <attr name="defaultDotColor" format="color" />
+        <attr name="highDotColor" format="color" />
+        <attr name="dotPosition" format="enum">
+            <enum name="top" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>

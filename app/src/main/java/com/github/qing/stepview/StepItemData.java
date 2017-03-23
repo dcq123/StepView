@@ -1,7 +1,7 @@
-package cn.qing.soft.stepview.views;
+package com.github.qing.stepview;
 
 /**
- * Created by dingchangqing on 16/8/4.
+ * Created by dcq on 2017/3/23.
  */
 
 public class StepItemData {
@@ -9,19 +9,19 @@ public class StepItemData {
     private String msg;
     private String date;
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getMsg() {
         return msg;
     }
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
